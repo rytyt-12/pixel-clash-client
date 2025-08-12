@@ -1,0 +1,6 @@
+html,body{height:100%;margin:0;background:#111;color:#eee;font-family:Inter,Arial}
+#topbar{position:fixed;left:10px;top:10px;z-index:10;display:flex;gap:12px}
+#score,#ranking{background:rgba(0,0,0,0.5);padding:6px 10px;border-radius:8px}
+#game{display:block;width:100vw;height:100vh}
+#ad-container{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);z-index:11;background:rgba(0,0,0,0.6);padding:6px 8px;border-radius:6px;font-size:14px}
+#loader{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);font-size:18px}

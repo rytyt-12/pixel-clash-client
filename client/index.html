@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pixel Clash.io</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="topbar">
+    <div id="score">Score: 0</div>
+    <div id="ranking">Top: -</div>
+  </div>
+  <canvas id="game"></canvas>
+
+  <!-- Emplacement publicité (AdInPlay ou équivalent) -->
+  <div id="ad-container">[PUB - remplacer par le code AdInPlay]</div>
+
+  <!-- Analytics placeholder: remplace par ton snippet (Plausible/GA/etc.) -->
+  <script>
+    // Analytics placeholder: replace with your analytics snippet
+    window.__PC_ANALYTICS__ = window.__PC_ANALYTICS__ || function(){ console.log('analytics event', arguments); };
+  </script>
+
+  <script src="client.js"></script>
+</body>
+</html>
