@@ -44,7 +44,26 @@ setInterval(()=>{
   }
 },1000/20);
 
+
 function draw(){
+  // --- CAMERA & MAP LIMITS (injected) ---
+  // World size (adjust if your server uses different map size)
+  const WORLD_W = 3000, WORLD_H = 2000;
+  // reset transforms and clear screen in screen coords
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.clearRect(0,0,W,H);
+  const local = (state && state.players && id && state.players[id]) ? state.players[id] : me;
+  const lx = (local && local.x) ? local.x : W/2;
+  const ly = (local && local.y) ? local.y : H/2;
+  const camX = Math.max(W/2, Math.min(WORLD_W - W/2, lx));
+  const camY = Math.max(H/2, Math.min(WORLD_H - H/2, ly));
+  ctx.save();
+  ctx.translate(Math.floor(W/2 - camX), Math.floor(H/2 - camY));
+  // optional faint border to indicate map limits
+  ctx.save();
+  ctx.globalAlpha = 0.06; ctx.strokeStyle = '#fff'; ctx.lineWidth = 4; ctx.strokeRect(0,0,WORLD_W,WORLD_H); ctx.restore();
+  // --- end injected ---
+
   ctx.clearRect(0,0,W,H);
   ctx.fillStyle = '#0b0b0b'; ctx.fillRect(0,0,W,H);
   state.powerups.forEach(p=>{
@@ -58,6 +77,8 @@ function draw(){
     ctx.fillStyle = '#f55'; ctx.fillRect(p.x-20, p.y+p.r+6, 40*(p.hp/100), 6);
   });
   state.bullets.forEach(b=>{ctx.fillStyle='#fff';ctx.fillRect(b.x-3,b.y-3,6,6)});
+  // restore transform after drawing world
+  ctx.restore();
   requestAnimationFrame(draw);
 }
 requestAnimationFrame(draw);
