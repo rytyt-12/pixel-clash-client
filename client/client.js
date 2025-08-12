@@ -8,7 +8,8 @@ function qs(name, fallback) {
 }
 
 const ROOM = qs('room', 'global');
-const SERVER_URL_BASE = qs('server', '');
+// Remplace SERVER_URL_BASE par l'URL de ton serveur Render
+const SERVER_URL_BASE = "wss://pixel-clash-client.onrender.com";
 const useCustomServer = SERVER_URL_BASE !== '';
 const SERVER_URL = useCustomServer ? SERVER_URL_BASE : (location.hostname === 'localhost' || location.hostname === '127.0.0.1' ? 'ws://localhost:3000' : (location.protocol === 'https:' ? 'wss://' + location.host : 'ws://' + location.host) );
 const canvas = document.getElementById('game');
